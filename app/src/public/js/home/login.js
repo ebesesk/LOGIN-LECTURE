@@ -12,8 +12,8 @@ function login() {
         psword: psword.value
     };
 
-    console.log(req);
-    console.log(JSON.stringify(req));
+    // console.log(req);
+    // console.log(JSON.stringify(req));
 
     // API
     fetch("/login", {
@@ -22,5 +22,8 @@ function login() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(req),
-    });
+    })
+        .then((res) => res.json())
+        // .then((res) => console.log(res));
+        .then(console.log);
 }
