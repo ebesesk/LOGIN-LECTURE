@@ -7,13 +7,12 @@ const loginBtn = document.querySelector("#button");
 loginBtn.addEventListener("click", login);
 
 function login() {
+    if (!id.value) return alert("아이디를 입력해주십시오.")
+    if (!psword.value) return alert("비밀번호를 입력해주십시.")
     const req = {
         id: id.value,
         psword: psword.value
     };
-
-    // console.log(req);
-    // console.log(JSON.stringify(req));
 
     // API
     fetch("/login", {
@@ -30,7 +29,7 @@ function login() {
             if (res.success) {
                 location.href = "/";
             } else {
-                alert(res.msg);
+                alert(res.err);
             }
         })
         .catch((err) => {
